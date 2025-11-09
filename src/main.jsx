@@ -13,6 +13,10 @@ import AddListing from './Pages/AddListing.jsx'
 import MyListing from './Pages/MyListing.jsx'
 import MyOrder from './Pages/MyOrder.jsx'
 import PetsAndSupplies from './Pages/PetsAndSupplies.jsx'
+import Adoption from './Components/Adoption/Adoption.jsx';
+import Accessories from './Components/Accessories/Accessories.jsx';
+import PetFoods from './Components/PetFoods/PetFoods.jsx';
+import PetCaringProducts from './Components/PetCaringProducts/PetCaringProducts.jsx';
 
 const router = createBrowserRouter([
   // Primary Layout Route
@@ -47,6 +51,22 @@ const router = createBrowserRouter([
       {
         path: '/my-orders',
         Component: MyOrder
+      },
+      {
+        path: '/accessories',
+        Component: Accessories
+      },
+      {
+        path: '/pet-foods',
+        Component: PetFoods
+      },
+      {
+        path: '/petCaringProducts',
+        Component: PetCaringProducts
+      },
+      {
+        path: '/adoption',
+        Component:Adoption
       },
     ],
   },

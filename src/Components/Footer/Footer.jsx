@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer p-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between">
         <aside className="mb-8 md:mb-0">
           <div className="mb-4 flex justify-center font-bold 2xl items-center">
-            <MdSmartToy /> <p> Paws <span className='text-red-600'>Mart</span></p>
+            <MdSmartToy /> <p> Paw <span className='text-red-600'>Mart</span></p>
           </div>
           <p className="max-w-xs text-sm opacity-80">
             PawMart connects local pet owners and buyers for adoption and pet care products.
