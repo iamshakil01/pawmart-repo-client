@@ -17,9 +17,11 @@ import Adoption from './Components/Adoption/Adoption.jsx';
 import Accessories from './Components/Accessories/Accessories.jsx';
 import PetFoods from './Components/PetFoods/PetFoods.jsx';
 import PetCaringProducts from './Components/PetCaringProducts/PetCaringProducts.jsx';
+import PrivateRoute from './Provider/PrivateRoute.jsx';
+import ProductsDetails from './Pages/ProductsDetails.jsx';
+
 
 const router = createBrowserRouter([
-  // Primary Layout Route
   {
     path: "/",
     Component: MainLayout,
@@ -38,35 +40,53 @@ const router = createBrowserRouter([
       },
       {
         path: '/pets-supplies',
-        Component:PetsAndSupplies
+        Component: PetsAndSupplies,
+        loader: () => fetch('http://localhost:3000/pets-supplies')
       },
       {
         path: '/add-listing',
-        Component: AddListing
+        element: <PrivateRoute>
+          <AddListing></AddListing>
+        </PrivateRoute>
       },
       {
         path: '/my-listing',
-        Component:MyListing
+        element: <PrivateRoute>
+          <MyListing></MyListing>
+        </PrivateRoute>
       },
       {
         path: '/my-orders',
-        Component: MyOrder
+        element: <PrivateRoute>
+          <MyOrder></MyOrder>
+        </PrivateRoute>
       },
       {
         path: '/accessories',
-        Component: Accessories
+        Component: Accessories,
+        loader: () => fetch('http://localhost:3000/pets-supplies')
       },
       {
         path: '/pet-foods',
-        Component: PetFoods
+        Component: PetFoods,
+        loader: () => fetch('http://localhost:3000/pets-supplies')
       },
       {
         path: '/petCaringProducts',
-        Component: PetCaringProducts
+        Component: PetCaringProducts,
+        loader: () => fetch('http://localhost:3000/pets-supplies')
       },
       {
         path: '/adoption',
-        Component:Adoption
+        Component: Adoption,
+        loader: () => fetch('http://localhost:3000/pets-supplies')
+      },
+      {
+        path: '/product-details/:id',
+        element: <PrivateRoute>
+          <ProductsDetails></ProductsDetails>
+        </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/pets-supplies/${params.id}`)
       },
     ],
   },
