@@ -3,7 +3,7 @@ import { MdSmartToy } from 'react-icons/md';
 
 const Footer = () => {
   return (
-    <div className="container mx-auto bg-neutral text-neutral-content mt-12 shadow-inner">
+    <div className="container mx-auto bg-neutral text-neutral-content mt-12 shadow-inner mb-10">
       <div className="footer p-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between">
         <aside className="mb-8 md:mb-0">
           <div className="mb-4 flex justify-center font-bold 2xl items-center">

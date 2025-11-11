@@ -18,16 +18,22 @@ const Navbar = () => {
       .catch(err => console.log(err));
   };
 
+
+  const activeLink = ({ isActive }) =>
+    isActive
+      ? " text-blue-500 underline font-bold"
+      : " hover:black font-bold";
+
   const links = (
     <>
-      <li><NavLink to='/'>Home</NavLink></li>
-      <li><NavLink to='/pets-supplies'>Pets & Supplies</NavLink></li>
+      <li><NavLink to='/' className={activeLink}>Home</NavLink></li>
+      <li><NavLink to='/pets-supplies' className={activeLink}>Pets & Supplies</NavLink></li>
 
       {user && (
         <>
-          <li><NavLink to='/add-listing'>Add Listing</NavLink></li>
-          <li><NavLink to='/my-listing'>My Listing</NavLink></li>
-          <li><NavLink to='/my-orders'>My Orders</NavLink></li>
+          <li><NavLink to='/add-listing' className={activeLink}>Add Listing</NavLink></li>
+          <li><NavLink to='/my-listing' className={activeLink}>My Listing</NavLink></li>
+          <li><NavLink to='/my-orders' className={activeLink}>My Orders</NavLink></li>
         </>
       )}
     </>
@@ -72,8 +78,8 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <NavLink className="btn btn-outline" to="/register">Register</NavLink>
-            <NavLink className="btn btn-outline" to="/login">Login</NavLink>
+            <NavLink className="btn btn-outline btn-primary hover:bg-black" to="/login">Login</NavLink>
+            <NavLink className="btn btn-outline btn-primary hover:bg-black" to="/register">Register</NavLink>
           </>
         )}
       </div>

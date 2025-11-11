@@ -57,8 +57,8 @@ const PetsAndSupplies = () => {
                                     📍 {pet.location}
                                 </p>
                                 <p className="text-lg font-bold mt-2">
-                                    {/* Corrected 'pet.Price' to 'pet.price' and ensured proper display */}
-                                    Price: {pet.price === 0 ? <span className="text-error">Adoption</span> : `৳${pet.price}`}
+                                
+                                    Price: {pet.price === 0 ? <span className="text-error">Free For Adoption</span> : `৳${pet.price}`}
                                 </p>
                                 {/* Corrected Link usage to use the destructured _id variable */}
                                 <Link to={`/product-details/${pet._id}`} className="card-actions justify-end mt-4">

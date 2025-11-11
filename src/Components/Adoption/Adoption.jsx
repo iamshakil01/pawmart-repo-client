@@ -58,7 +58,7 @@ const Adoption = () => {
 
                             {/* Details Button */}
                             <Link to={`/product-details/${listing._id}`} className="card-actions justify-end mt-4">
-                                <button className="btn btn-sm btn-outline btn-secondary w-full">See Details</button>
+                                <button className="btn btn-sm btn-outline btn-primary w-full">See Details</button>
                             </Link>
 
                         </div>
