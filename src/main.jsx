@@ -19,6 +19,7 @@ import PetFoods from './Components/PetFoods/PetFoods.jsx';
 import PetCaringProducts from './Components/PetCaringProducts/PetCaringProducts.jsx';
 import PrivateRoute from './Provider/PrivateRoute.jsx';
 import ProductsDetails from './Pages/ProductsDetails.jsx';
+import Loading from './Components/Loading/Loading.jsx';
 
 
 const router = createBrowserRouter([
@@ -41,7 +42,8 @@ const router = createBrowserRouter([
       {
         path: '/pets-supplies',
         Component: PetsAndSupplies,
-        loader: () => fetch('http://localhost:3000/pets-supplies')
+        loader: () => fetch('https://pawmart-server-five.vercel.app/pets-supplies'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/add-listing',
@@ -64,29 +66,34 @@ const router = createBrowserRouter([
       {
         path: '/accessories',
         Component: Accessories,
-        loader: () => fetch('http://localhost:3000/pets-supplies')
+        loader: () => fetch('https://pawmart-server-five.vercel.app/pets-supplies'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/pet-foods',
         Component: PetFoods,
-        loader: () => fetch('http://localhost:3000/pets-supplies')
+        loader: () => fetch('https://pawmart-server-five.vercel.app/pets-supplies'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/petCaringProducts',
         Component: PetCaringProducts,
-        loader: () => fetch('http://localhost:3000/pets-supplies')
+        loader: () => fetch('https://pawmart-server-five.vercel.app/pets-supplies'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/adoption',
         Component: Adoption,
-        loader: () => fetch('http://localhost:3000/pets-supplies')
+        loader: () => fetch('https://pawmart-server-five.vercel.app/pets-supplies'),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: '/product-details/:id',
         element: <PrivateRoute>
           <ProductsDetails></ProductsDetails>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/pets-supplies/all/${params.id}`)
+        loader: ({ params }) => fetch(`https://pawmart-server-five.vercel.app/pets-supplies/${params.id}`),
+        hydrateFallbackElement: <Loading></Loading>
       },
     ],
   },

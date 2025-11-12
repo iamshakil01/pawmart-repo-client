@@ -21,7 +21,7 @@ const AddListing = () => {
             created_by: user.email
         }
 
-        fetch('http://localhost:3000/pets-supplies', {
+        fetch('https://pawmart-server-five.vercel.app/pets-supplies', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

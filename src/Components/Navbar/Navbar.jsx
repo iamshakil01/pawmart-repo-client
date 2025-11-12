@@ -18,11 +18,10 @@ const Navbar = () => {
       .catch(err => console.log(err));
   };
 
-
   const activeLink = ({ isActive }) =>
     isActive
-      ? " text-blue-500 underline font-bold"
-      : " hover:black font-bold";
+      ? "text-blue-500 underline font-bold"
+      : "hover:black font-bold";
 
   const links = (
     <>
@@ -40,48 +39,60 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm container mx-auto">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul tabIndex="-1" className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            {links}
-          </ul>
-        </div>
-        <a className="btn btn-ghost text-2xl font-bold"><MdSmartToy /> Paw<span className='text-red-600'>Mart</span></a>
-      </div>
-
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
-      </div>
-
-      <div className="navbar-end gap-5">
-        {user ? (
-          <>
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user.photoURL || "https://i.ibb.co/YT7yB3m/default-avatar.png"} alt="Profile" />
-                </div>
+    <div className="fixed top-0 left-0 w-full z-50 bg-base-100 shadow-sm">
+      <div className="container mx-auto px-4 mb-5">
+        <div className="navbar">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                        d="M4 6h16M4 12h8m-8 6h16" />
+                </svg>
               </div>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-40 p-2 shadow">
-                <li className='text-center font-semibold'>{user.displayName}</li>
-                <li><button onClick={handleLogout}>Logout</button></li>
+              <ul tabIndex="-1"
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                {links}
               </ul>
             </div>
-          </>
-        ) : (
-          <>
-            <NavLink className="btn btn-outline btn-primary hover:bg-black" to="/login">Login</NavLink>
-            <NavLink className="btn btn-outline btn-primary hover:bg-black" to="/register">Register</NavLink>
-          </>
-        )}
+            <a className="btn btn-ghost text-2xl font-bold">
+              <MdSmartToy />
+              Paw<span className='text-red-600'>Mart</span>
+            </a>
+          </div>
+
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              {links}
+            </ul>
+          </div>
+
+          <div className="navbar-end gap-5">
+            {user ? (
+              <>
+                <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                    <div className="w-10 rounded-full">
+                      <img src={user.photoURL || "https://i.ibb.co/YT7yB3m/default-avatar.png"}
+                           alt="Profile" />
+                    </div>
+                  </div>
+                  <ul tabIndex={0}
+                      className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-40 p-2 shadow">
+                    <li className='text-center font-semibold'>{user.displayName}</li>
+                    <li><button onClick={handleLogout}>Logout</button></li>
+                  </ul>
+                </div>
+              </>
+            ) : (
+              <>
+                <NavLink className="btn btn-outline btn-primary hover:bg-black" to="/login">Login</NavLink>
+                <NavLink className="btn btn-outline btn-primary hover:bg-black" to="/register">Register</NavLink>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
