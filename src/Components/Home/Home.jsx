@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
-import { Link, NavLink,  } from 'react-router';
+import { Link, NavLink, } from 'react-router';
 import { CiLocationOn } from 'react-icons/ci';
 import { MdLocationOn } from 'react-icons/md';
 
 const Home = () => {
     const [listings, setListings] = useState([]);
-    // const navigate = useNavigate();
 
     useEffect(() => {
         fetch('https://pawmart-server-five.vercel.app/pets-supplies/home')
@@ -24,7 +23,7 @@ const Home = () => {
                 <NavLink to={'/petCaringProducts'} className="btn btn-outline btn-primary hover:bg-black font-bold">Pet Care Products</NavLink>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 p-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 p-3 bg-base-300 rounded-2xl">
                 {listings.map(item => (
                     <div key={item._id} className=' rounded-xl shadow-md p-3 text-center flex flex-col justify-between h-[600px]'>
                         <div>
@@ -37,12 +36,10 @@ const Home = () => {
                                 {item.location}
                             </p>
                         </div>
-
                         <Link to={`/product-details/${item._id}`} className="card-actions justify-end mt-4">
-                            <button className="btn btn-sm btn-outline btn-primary w-full">See Details</button>
+                            <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
                         </Link>
                     </div>
-
                 ))}
             </div>
         </div>

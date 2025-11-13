@@ -14,8 +14,10 @@ const AddListing = () => {
         const formData = {
             name: e.target.name.value,
             category: e.target.category.value,
+            price: e.target.price.value,
             description: e.target.description.value,
-            thumbnail: e.target.image.value,
+            image: e.target.image.value,
+            location: e.target.location.value,
             created_at: new Date(),
             downloads: 0,
             created_by: user.email
@@ -42,7 +44,7 @@ const AddListing = () => {
 
 
     return (
-        <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-5">
+        <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl mt-30">
             <div className="card-body p-6 relative">
                 <h2 className="text-2xl font-bold text-center mb-6">Add New List</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -77,6 +79,18 @@ const AddListing = () => {
                         </select>
                     </div>
 
+                    {/* Price */}
+                    <div>
+                        <label className="label font-medium">Price</label>
+                        <input
+                            type="text"
+                            name="price"
+                            required
+                            className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+                            placeholder="0"
+                        />
+                    </div>
+
                     {/* Description */}
                     <div>
                         <label className="label font-medium">Description</label>
@@ -103,6 +117,19 @@ const AddListing = () => {
                     <div className="form-control">
                         <label className="label"><span className="label-text">Earliest Pick-Up/Availability Date</span></label>
                         <input type="date" name="pickupDate" className="input input-bordered w-full" required />
+                    </div>
+
+                    {/* Location */}
+
+                    <div>
+                        <label className="label font-medium">Location</label>
+                        <input
+                            type="text"
+                            name="location"
+                            required
+                            className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
+                            placeholder="Dhaka, Bangladesh"
+                        />
                     </div>
 
                     <div className="form-control">
