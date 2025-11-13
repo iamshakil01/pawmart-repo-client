@@ -5,7 +5,7 @@ const CATEGORIES = ["All", "Pets", "Food", "Accessories", "Care Products"];
 
 const PetsAndSupplies = () => {
   const petsData = useLoaderData();
-  console.log(petsData)
+  // console.log(petsData)
 
   return (
     <div className="p-8 bg-base-200 min-h-screen container mx-auto">

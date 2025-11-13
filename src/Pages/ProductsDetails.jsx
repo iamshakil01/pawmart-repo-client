@@ -31,17 +31,38 @@ const ProductsDetails = () => {
             phone,
             category,
         };
-        fetch('http://localhost:3000/orders', {
+
+        // Save to Orders
+        fetch('https://pawmart-server-five.vercel.app/orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(orderData),
         })
-
             .then(res => res.json())
             .then(saved => {
                 if (saved.insertedId) {
-                    toast.success("Order submitted!");
-                    navigate('/my-orders');
+                    const listingData = {
+                        id: _id,
+                        name,
+                        category,
+                        price,
+                        date: new Date().toISOString().split('T')[0],
+                        email: user?.email,
+                    };
+
+                    fetch('http://localhost:3000/listings', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(listingData),
+                    })
+                        .then(res => res.json())
+                        .then(() => {
+                            toast.success("Order & Listing saved!");
+                            navigate('/my-orders');
+                        })
+                        .catch(err => {
+                            toast.error("Order saved but listing not added.", err);
+                        });
                 } else {
                     toast.error("Failed to submit order");
                 }

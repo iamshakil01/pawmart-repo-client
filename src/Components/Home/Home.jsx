@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
 import { Link, NavLink, } from 'react-router';
-import { CiLocationOn } from 'react-icons/ci';
 import { MdLocationOn } from 'react-icons/md';
 
 const Home = () => {

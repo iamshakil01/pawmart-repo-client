@@ -7,32 +7,29 @@ const MyOrders = () => {
   // ...
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/orders?email=${user.email}`)
+      fetch(`https://pawmart-server-five.vercel.app/orders?email=${user.email}`)
         .then(res => {
-          // Check for a bad response status (4xx or 5xx)
           if (!res.ok) {
             console.error(`Fetch failed with status: ${res.status}`);
-            // Throwing an error here prevents the next .then(res.json()) from running
             throw new Error(`Server responded with status ${res.status}`);
           }
           return res.json();
         })
         .then(data => {
-          // IMPORTANT: Check if the response data is an array before setting the state
           if (Array.isArray(data)) {
             setOrders(data);
           } else {
             console.error("Server response was not an array:", data);
-            setOrders([]); // Set to empty array to maintain correct state type
+            setOrders([]);
           }
         })
         .catch(err => {
           console.error("Error fetching orders:", err);
-          setOrders([]); // Set to empty array on fetch/network error
+          setOrders([]); 
         });
     }
   }, [user?.email]);
-  // ...
+
   return (
     <div className="p-8 bg-base-100 min-h-screen">
       <h1 className="text-3xl font-bold text-center text-secondary mb-8">📦 My Orders & Adoption Requests</h1>
