@@ -6,9 +6,7 @@ const Adoption = () => {
     const adoptPet = useLoaderData();
 
     const adoptionListings = adoptPet.filter(adopt =>
-
         adopt.category === 'Adoption'
-
     );
 
     return (
@@ -21,15 +19,14 @@ const Adoption = () => {
                 {adoptionListings.map((listing, index) => (
                     <div
                         key={index}
-                        className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-base-300"
-                    >
+                        className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-base-300">
+
                         {/* Image */}
                         <figure className="h-56 overflow-hidden">
                             <img
                                 src={listing.image}
                                 alt={listing.name}
-                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"
-                            />
+                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"/>
                         </figure>
                         <div className="card-body p-6">
 
@@ -44,47 +41,30 @@ const Adoption = () => {
                             </div>
 
                             {/* Location */}
-
                             <p className="text-sm text-gray-600 mb-2">
                                 <span className="font-semibold text-neutral">📍 Location:</span> {listing.location}
-
                             </p>
 
                             {/* Price */}
-
                             <p className="text-xl font-extrabold text-error mt-1">
                                 Free for Adoption
                             </p>
 
                             {/* Details Button */}
                             <Link to={`/product-details/${listing._id}`} className="card-actions justify-end mt-4">
-                                <button className="btn btn-sm btn-outline btn-primary w-full">See Details</button>
+                                <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
                             </Link>
-
                         </div>
-
                     </div>
-
                 ))}
-
-
-
                 {adoptionListings.length === 0 && (
-
                     <div className="col-span-full text-center py-10 text-lg text-gray-500">
-
                         No adoption listings are currently available.
-
                     </div>
-
                 )}
-
             </div>
-
         </div>
-
     );
-
 };
 
 export default Adoption;

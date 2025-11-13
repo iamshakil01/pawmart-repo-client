@@ -5,6 +5,7 @@ const CATEGORIES = ["All", "Pets", "Food", "Accessories", "Care Products"];
 
 const PetsAndSupplies = () => {
   const petsData = useLoaderData();
+  console.log(petsData)
 
   return (
     <div className="p-8 bg-base-200 min-h-screen container mx-auto">
@@ -30,31 +31,32 @@ const PetsAndSupplies = () => {
           </label>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {petsData.map(pet => {
-          const id = pet._id || pet.id;
-          return (
-            <div key={id} className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
-              <figure className="h-56 overflow-hidden">
-                <img src={pet.image} alt={pet.name} className="w-full h-full object-cover" />
-              </figure>
-              <div className="card-body p-5">
-                <h2 className="card-title text-xl text-neutral">
-                  {pet.name}
-                  <div className={`badge ${pet.category === 'Pets' ? 'badge-error' : 'badge-info'}`}>{pet.category}</div>
-                </h2>
-                <p className="text-sm text-gray-600">📍 {pet.location}</p>
-                <p className="text-lg font-bold mt-2">
-                  Price: {pet.price === 0 ? <span className="text-error">Free For Adoption</span> : `৳${pet.price}`}
-                </p>
-                <Link to={`/product-details/${id}`} className="card-actions justify-end mt-4">
-                  <button className="btn btn-sm btn-outline btn-secondary w-full">See Details</button>
-                </Link>
-              </div>
-            </div>
-          );
-        })}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {(Array.isArray(petsData) ? petsData : []).map(pet => {
+    const id = pet._id || pet.id;
+    return (
+      <div key={id} className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <figure className="h-56 overflow-hidden">
+          <img src={pet.image} alt={pet.name} className="w-full h-full object-cover" />
+        </figure>
+        <div className="card-body p-5">
+          <h2 className="card-title text-xl text-neutral">
+            {pet.name}
+            <div className={`badge ${pet.category === 'Pets' ? 'badge-error' : 'badge-info'}`}>{pet.category}</div>
+          </h2>
+          <p className="text-sm text-gray-600">📍 {pet.location}</p>
+          <p className="text-lg font-bold mt-2">
+            Price: {pet.price === 0 ? <span className="text-error">Free For Adoption</span> : `৳${pet.price}`}
+          </p>
+          <Link to={`/product-details/${id}`} className="card-actions justify-end mt-4">
+            <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
+          </Link>
+        </div>
       </div>
+    );
+  })}
+</div>
+
     </div>
   );
 };

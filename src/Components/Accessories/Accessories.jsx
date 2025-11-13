@@ -54,7 +54,7 @@ const Accessories = () => {
 
                             {/* Details Button */}
                             <Link to={`/product-details/${access._id}`} className="card-actions justify-end mt-4">
-                                <button className="btn btn-sm btn-outline btn-primary w-full">See Details</button>
+                                <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
                             </Link>
                         </div>
                     </div>
