@@ -50,7 +50,7 @@ const ProductsDetails = () => {
                         email: user?.email,
                     };
 
-                    fetch('http://localhost:3000/listings', {
+                    fetch('pawmart-server-five.vercel.app/listings', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(listingData),
