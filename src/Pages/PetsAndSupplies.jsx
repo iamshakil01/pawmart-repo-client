@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
+import { MdLocationOn } from 'react-icons/md';
 
 const CATEGORIES = ["All", "Pets", "Food", "Accessories", "Care Products"];
 
 const PetsAndSupplies = () => {
   const petsData = useLoaderData();
-  // console.log(petsData)
 
   return (
     <div className="p-8 bg-base-200 min-h-screen container mx-auto">
@@ -31,32 +31,29 @@ const PetsAndSupplies = () => {
           </label>
         </div>
       </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-  {(Array.isArray(petsData) ? petsData : []).map(pet => {
-    const id = pet._id || pet.id;
-    return (
-      <div key={id} className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
-        <figure className="h-56 overflow-hidden">
-          <img src={pet.image} alt={pet.name} className="w-full h-full object-cover" />
-        </figure>
-        <div className="card-body p-5">
-          <h2 className="card-title text-xl text-neutral">
-            {pet.name}
-            <div className={`badge ${pet.category === 'Pets' ? 'badge-error' : 'badge-info'}`}>{pet.category}</div>
-          </h2>
-          <p className="text-sm text-gray-600">📍 {pet.location}</p>
-          <p className="text-lg font-bold mt-2">
-            Price: {pet.price === 0 ? <span className="text-error">Free For Adoption</span> : `৳${pet.price}`}
-          </p>
-          <Link to={`/product-details/${id}`} className="card-actions justify-end mt-4">
-            <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
-          </Link>
-        </div>
-      </div>
-    );
-  })}
-</div>
 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 p-3 bg-base-300 rounded-2xl">
+        {(Array.isArray(petsData) ? petsData : []).map(item => {
+          const id = item._id || item.id;
+          return (
+            <div key={id} className='rounded-xl shadow-md p-3 text-center flex flex-col justify-between h-[600px]'>
+              <div>
+                <img src={item.image} alt={item.name} className='w-full h-100 object-cover rounded-lg' />
+                <h3 className='text-lg font-bold mt-2'>{item.name}</h3>
+                <p className='text-gray-600'>{item.category}</p>
+                <p className='font-semibold'>{item.price ? `$${item.price}` : "Free for Adoption"}</p>
+                <p className='text-sm text-gray-500 flex items-center justify-center gap-1'>
+                  <MdLocationOn className='text-red-500' />
+                  {item.location}
+                </p>
+              </div>
+              <Link to={`/product-details/${id}`} className="card-actions justify-end mt-4">
+                <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

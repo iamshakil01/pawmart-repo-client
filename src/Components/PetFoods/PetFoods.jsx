@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
+import { MdLocationOn } from 'react-icons/md';
 
 const PetFood = () => {
     const allListings = useLoaderData();
-
     const foodProducts = allListings.filter(item =>
         item.category === 'Pet Food'
     );
@@ -14,45 +14,22 @@ const PetFood = () => {
                 🍽️ Quality Pet Food & Nutrition
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                {foodProducts.map((product, index) => (
-                    <div
-                        key={index}
-                        className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-base-300">
-                        {/* Image */}
-                        <figure className="h-56 overflow-hidden">
-                            <img
-                                src={product.image}
-                                alt={product.name}
-                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"/>
-                        </figure>
-
-                        <div className="card-body p-6">
-
-                            {/* Name */}
-                            <h2 className="card-title text-2xl text-neutral">
-                                {product.name}
-                            </h2>
-
-                            {/* Category */}
-                            <div className="badge badge-success text-white font-semibold mb-2">
-                                {product.category}
-                            </div>
-
-                            {/* Location */}
-                            <p className="text-sm text-gray-600 mb-2">
-                                <span className="font-semibold text-neutral">📍 Location:</span> {product.location}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 p-3 bg-base-300 rounded-2xl max-w-7xl mx-auto">
+                {foodProducts.map((item, index) => (
+                    <div key={index} className='rounded-xl shadow-md p-3 text-center flex flex-col justify-between h-[600px]'>
+                        <div>
+                            <img src={item.image} alt={item.name} className='w-full h-100 object-cover rounded-lg' />
+                            <h3 className='text-lg font-bold mt-2'>{item.name}</h3>
+                            <p className='text-gray-600'>{item.category}</p>
+                            <p className='font-semibold'>৳{item.price}</p>
+                            <p className='text-sm text-gray-500 flex items-center justify-center gap-1'>
+                                <MdLocationOn className='text-red-500' />
+                                {item.location}
                             </p>
-
-                            {/* Price */}
-                            <p className="text-xl font-extrabold text-primary mt-1">
-                                Price: ৳{product.price.toLocaleString()}
-                            </p>
-
-                            <Link to={`/product-details/${product._id}`} className="card-actions justify-end mt-4">
-                                <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
-                            </Link>
                         </div>
+                        <Link to={`/product-details/${item._id}`} className="card-actions justify-end mt-4">
+                            <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
+                        </Link>
                     </div>
                 ))}
             </div>
