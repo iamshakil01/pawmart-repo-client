@@ -2,10 +2,8 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 
 const PetCaringProducts = () => {
-    // Assuming useLoaderData() returns the full list of products and pets
-    const allListings = useLoaderData(); 
+    const allListings = useLoaderData();
 
-    // 1. Filter the data to show ONLY items in the 'Pet Care Products' category
     const careProducts = allListings.filter(item =>
         item.category === 'Pet Care Products'
     );
@@ -15,12 +13,11 @@ const PetCaringProducts = () => {
             <h1 className="text-4xl font-extrabold text-center text-secondary mb-10">
                 💊 Essential Pet Care Products
             </h1>
-            
-            {/* --- Products Grid Layout --- */}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                 {careProducts.map((product, index) => (
                     <div
-                        key={index} 
+                        key={index}
                         className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-base-300"
                     >
                         {/* Image */}
@@ -28,17 +25,17 @@ const PetCaringProducts = () => {
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"
-                            />
+                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"/>
                         </figure>
 
                         <div className="card-body p-6">
+
                             {/* Name */}
                             <h2 className="card-title text-2xl text-neutral">
                                 {product.name}
                             </h2>
 
-                            {/* Category - Using badge-warning for care items */}
+                            {/* Category */}
                             <div className="badge badge-warning text-white font-semibold mb-2">
                                 {product.category}
                             </div>
@@ -48,13 +45,13 @@ const PetCaringProducts = () => {
                                 <span className="font-semibold text-neutral">📍 Location:</span> {product.location}
                             </p>
 
-                            {/* Price - Showing actual price */}
+                            {/* Price */}
                             <p className="text-xl font-extrabold text-success mt-1">
                                 Price: ৳{product.price.toLocaleString()}
                             </p>
 
                             {/* Details Button */}
-                           <Link to={`/product-details/${product._id}`} className="card-actions justify-end mt-4">
+                            <Link to={`/product-details/${product._id}`} className="card-actions justify-end mt-4">
                                 <button className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">See Details</button>
                             </Link>
                         </div>

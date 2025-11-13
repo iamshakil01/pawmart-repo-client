@@ -4,10 +4,10 @@ import { Link, useLoaderData } from 'react-router';
 const Accessories = () => {
     const accessories = useLoaderData();
     console.log(accessories)
-    // console.log(accessories) // Keeping your console log
+    // console.log(accessories)
 
     const petAccessories = accessories.filter(access =>
-        access.category === 'Accessories' // Correctly filters for 'Accessories'
+        access.category === 'Accessories'
     );
 
     return (
@@ -27,19 +27,19 @@ const Accessories = () => {
                             <img
                                 src={access.image}
                                 alt={access.name}
-                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"
-                            />
+                                className="w-full h-full object-cover transform hover:scale-105 transition duration-500"/>
                         </figure>
 
                         <div className="card-body p-6">
+
                             {/* Name */}
                             <h2 className="card-title text-2xl text-neutral">
                                 {access.name}
                             </h2>
 
-                            {/* Category - CORRECTED to show Accessories and use a different color */}
+                            {/* Category */}
                             <div className="badge badge-info text-white font-semibold mb-2">
-                                {access.category} {/* Dynamically show "Accessories" */}
+                                {access.category} 
                             </div>
 
                             {/* Location */}
@@ -47,9 +47,9 @@ const Accessories = () => {
                                 <span className="font-semibold text-neutral">📍 Location:</span> {access.location}
                             </p>
 
-                            {/* Price - CORRECTED to show the actual price */}
+                            {/* Price */}
                             <p className="text-xl font-extrabold text-success mt-1">
-                                Price: ৳{access.price.toLocaleString()} {/* Showing price with currency symbol and formatting */}
+                                Price: ৳{access.price.toLocaleString()}
                             </p>
 
                             {/* Details Button */}
@@ -60,7 +60,6 @@ const Accessories = () => {
                     </div>
                 ))}
 
-                {/* CORRECTED: Check if Accessories list is empty */}
                 {petAccessories.length === 0 && (
                     <div className="col-span-full text-center py-10 text-lg text-gray-500">
                         No pet accessories are currently available.

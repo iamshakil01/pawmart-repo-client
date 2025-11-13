@@ -82,7 +82,6 @@ const Navbar = () => {
                       className="menu menu-sm dropdown-content bg-base-100 rounded-box mt-3 w-40 p-2 shadow">
                     <li className='text-center font-semibold'>{user.displayName}</li>
                     <li><button onClick={handleLogout}>Logout</button></li>
-                  
                   </ul>
                 </div>
               </>

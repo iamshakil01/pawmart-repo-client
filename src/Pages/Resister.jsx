@@ -82,7 +82,6 @@ const Register = () => {
                         <label className="label font-bold text-xs">Email</label>
                         <input name='email' type="email" className="input input-bordered w-full" placeholder="Enter Your Email" required />
 
-
                         {/* Password With Toggle */}
                         <label className="label font-bold text-xs">Password</label>
                         <div className='relative'>

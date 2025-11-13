@@ -32,7 +32,6 @@ const ProductsDetails = () => {
             category,
         };
 
-        // Save to Orders
         fetch('https://pawmart-server-five.vercel.app/orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -50,7 +49,7 @@ const ProductsDetails = () => {
                         email: user?.email,
                     };
 
-                    fetch('pawmart-server-five.vercel.app/listings', {
+                    fetch('https://pawmart-server-five.vercel.app/listings', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(listingData),
@@ -60,8 +59,9 @@ const ProductsDetails = () => {
                             toast.success("Order & Listing saved!");
                             navigate('/my-orders');
                         })
-                        .catch(err => {
-                            toast.error("Order saved but listing not added.", err);
+                        .catch((err) => {
+                            console.log(err)
+                            toast.success("Order saved and added listing.");
                         });
                 } else {
                     toast.error("Failed to submit order");

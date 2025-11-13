@@ -85,8 +85,7 @@ const MyListings = () => {
                                         onClick={() => {
                                             const newName = prompt("Enter new product name:", listing.productName);
                                             if (newName) handleUpdate(listing._id, "productName", newName);
-                                        }}
-                                    >
+                                        }}>
                                         Update
                                     </button>
                                     <button

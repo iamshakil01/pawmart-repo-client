@@ -4,13 +4,10 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const AddListing = () => {
-
     const { user } = useContext(AuthContext)
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
         const formData = {
             name: e.target.name.value,
             category: e.target.category.value,
@@ -38,8 +35,6 @@ const AddListing = () => {
             .catch(err => {
                 console.log(err)
             })
-
-
     }
 
 
@@ -48,6 +43,7 @@ const AddListing = () => {
             <div className="card-body p-6 relative">
                 <h2 className="text-2xl font-bold text-center mb-6">Add New List</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
+
                     {/* Name Field */}
                     <div>
                         <label className="label font-medium">Products/Pet Name</label>
@@ -56,8 +52,7 @@ const AddListing = () => {
                             name="name"
                             required
                             className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                            placeholder="Enter name"
-                        />
+                            placeholder="Enter name" />
                     </div>
 
                     {/* Category Dropdown */}
@@ -67,8 +62,7 @@ const AddListing = () => {
                             defaultValue={""}
                             name="category"
                             required
-                            className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
-                        >
+                            className="select w-full rounded-full focus:border-0 focus:outline-gray-200" >
                             <option value="" disabled>
                                 Select category
                             </option>
@@ -87,8 +81,7 @@ const AddListing = () => {
                             name="price"
                             required
                             className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                            placeholder="0"
-                        />
+                            placeholder="0" />
                     </div>
 
                     {/* Description */}
@@ -111,8 +104,7 @@ const AddListing = () => {
                             name="image"
                             required
                             className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                            placeholder="https://example.com/image.jpg"
-                        />
+                            placeholder="https://example.com/image.jpg" />
                     </div>
                     <div className="form-control">
                         <label className="label"><span className="label-text">Earliest Pick-Up/Availability Date</span></label>
@@ -120,7 +112,6 @@ const AddListing = () => {
                     </div>
 
                     {/* Location */}
-
                     <div>
                         <label className="label font-medium">Location</label>
                         <input
@@ -128,8 +119,7 @@ const AddListing = () => {
                             name="location"
                             required
                             className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-                            placeholder="Dhaka, Bangladesh"
-                        />
+                            placeholder="Dhaka, Bangladesh" />
                     </div>
 
                     <div className="form-control">
@@ -141,8 +131,7 @@ const AddListing = () => {
                             name="email"
                             value={user.email} // Dynamic value from AuthContext
                             className="input input-bordered w-full input-info bg-info-content/10 rounded-full" // Added a slight background for visual cue
-                            readOnly
-                        />
+                            readOnly />
                         <label className="label">
                             <span className="label-text-alt text-info">This field is read-only and uses your authenticated email.</span>
                         </label>
@@ -151,8 +140,7 @@ const AddListing = () => {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700"
-                    >
+                        className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-pink-500 to-red-600 hover:from-pink-600 hover:to-red-700">
                         Submit List
                     </button>
                 </form>
